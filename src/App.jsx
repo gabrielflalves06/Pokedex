@@ -11,19 +11,19 @@ export default function PokeApi() {
   const [region, setRegion] = useState('');
   const [description, setDescription] = useState('');
 
-  async function ProcurarPokedex(num: number) {
+  async function ProcurarPokedex(num) {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokedex/${num}`)
       ProcurarPokemons(response.data.pokemon_entries);
       setRegion(response.data.name)
-      setDescription(response.data.descriptions.find((desc: { language: { name: string; }; }) => desc.language.name === "en"));
+      setDescription(response.data.descriptions.find((desc) => desc.language.name === "en"));
     } catch (error) {
       console.log(error)
     }
   }
 
 
-  async function ProcurarPokemons(pokedexList: any[]) {
+  async function ProcurarPokemons(pokedexList) {
     try {
       const result = pokedexList.map(async (pokedex) => {
         const response = await axios.get(pokedex.pokemon_species.url);
@@ -37,9 +37,9 @@ export default function PokeApi() {
   }
 
 
-  async function ListarPokemon(pokeList: any[]) {
+  async function ListarPokemon(pokeList) {
     try {
-      const result = pokeList.map(async (pokemon: { varieties: { pokemon: { url: string; }; }[]; }) => {
+      const result = pokeList.map(async (pokemon) => {
         const response = await axios.get(pokemon.varieties[0].pokemon.url);
         return response.data;
       });

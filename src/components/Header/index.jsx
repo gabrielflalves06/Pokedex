@@ -27,7 +27,7 @@ const PokedexNavigation = ({ ProcurarPokedex }) => {
     return (
         <div className="topnav">
             
-            <img src="src\assets\logo.png" width={100} alt="" />
+            <img src="/logo.png" width={100} alt="" />
             <nav>
                 {pokedexOptions.map((option) => (
                     <li

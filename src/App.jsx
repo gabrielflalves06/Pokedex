@@ -62,7 +62,7 @@ export default function PokeApi() {
       <Description nome={region} descrição={description.description} />
       <div className="container_pokemon">
         {pokemons.map((pokemon) => (
-          <PokeCard key={pokemon.id} id={pokemon.id} nome={pokemon.name.toUpperCase()} imagem={pokemon.sprites.front_default} tipos={pokemon.types} />
+          <PokeCard key={pokemon.id} id={pokemon.id} nome={pokemon.name} imagem={pokemon.sprites.front_default} tipos={pokemon.types} />
         ))}
       </div>
     </>

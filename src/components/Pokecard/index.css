@@ -1,5 +1,5 @@
 .card_pokemon {
-    background-color: #ecf0f1;
+    
     border: 1px solid #bdc3c7;
     padding: 20px;
     text-align: center;
@@ -18,6 +18,7 @@
     margin-bottom: 20px;
     border-radius: 50%;
     object-fit: cover;
+    background-color: #ecf0f1;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -25,4 +26,77 @@
     margin: 15px 0;
     font-size: 18px;
     color: #34495e;
+}
+
+
+.grass{
+    background-color: #78C850;
+}
+
+.fire{
+    background-color: #F08030;
+}
+
+.water{
+    background-color: #6890F0;
+}
+
+.bug{
+    background-color: #A8B820;
+}
+
+.normal{
+    background: #A8A878;
+}
+
+.poison{
+    background: #A040A0;
+}
+
+.electric{
+    background: #F8D030
+}
+
+.ground{
+    background: #E0C068;
+}
+
+.fairy{
+    background: #EE99AC;
+}
+
+.fighting{
+    background: #C03028;
+}
+
+.psychic{
+    background: #F85888;
+}
+
+.rock{
+    background-color: #B8A038;
+}
+
+.ghost{
+    background-color: #705898;
+}
+
+.ice{
+    background-color: #98D8D8;
+}
+
+.dragon{
+    background: #7038F8;
+}
+
+.dark{
+    background: #705848;
+}
+
+.steel{
+    background: #B8B8D0;
+}
+
+.flying{
+    background: #A890F0;
 }

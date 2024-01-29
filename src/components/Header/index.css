@@ -13,13 +13,6 @@
     width: 100px;
   }
   
-  .topnav nav {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-    justify-content: center;
-    background-color: #1b2631;
-  }
-  
   .lista-menu__itens {
     display: inline;
     margin: 0 10px; /* Reduzi a margem para aumentar o espaço disponível para os itens */

@@ -1,5 +1,4 @@
 .card_pokemon {
-    
     border: 1px solid #bdc3c7;
     padding: 20px;
     text-align: center;
@@ -25,6 +24,7 @@
 .card_pokemon p {
     margin: 15px 0;
     font-size: 18px;
+    font-weight: bolder;
     color: #34495e;
 }
 

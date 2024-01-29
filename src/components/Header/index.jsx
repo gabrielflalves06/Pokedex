@@ -1,4 +1,5 @@
 import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PokedexNavigation = ({ ProcurarPokedex }) => {
 
@@ -26,17 +27,15 @@ const PokedexNavigation = ({ ProcurarPokedex }) => {
 
     return (
         <div className="topnav">
-            
+
             <img src="/logo.png" width={100} alt="" />
-            <nav>
+            <select className='form-select form-select-lg mb-3' style={{ width: '90%', margin: "10px" }}  onChange={(e) => ProcurarPokedex(parseInt(e.target.value))}>
                 {pokedexOptions.map((option) => (
-                    <li
-                        className="lista-menu__itens" onClick={() => ProcurarPokedex(option.id)}
-                    >
+                    <option key={option.id} value={option.id}>
                         {option.name}
-                    </li>
+                    </option>
                 ))}
-            </nav>
+            </select>
         </div>
 
     );

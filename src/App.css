@@ -12,3 +12,34 @@ body {
     padding: 0;
     background-color: #f8f8f8;
 }
+
+.input-pesquisa input {
+    padding: 10px;
+    margin: 10px 0;
+    width: calc(100% - 20px); /* Ajusta a largura para evitar que o input ultrapasse a tela */
+    max-width: 400px; /* Adiciona uma largura máxima para tornar o input mais responsivo */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-pesquisa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-pesquisa::placeholder {
+    color: #999;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.input-pesquisa:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}

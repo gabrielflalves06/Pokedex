@@ -102,6 +102,7 @@ export default function Home() {
             </option>
           ))}
         </select>
+        <p>Att 30/01</p>
       </div>
 
       <div className='container' style={{ margin: '10px auto' }}>

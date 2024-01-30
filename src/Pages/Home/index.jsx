@@ -1,16 +1,19 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import './App.css';
-import Description from './components/Description';
-import PokedexNavigation from './components/Header';
-import PokeCard from './components/Pokecard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from 'react';
+import Description from '../../components/Description';
+import PokeCard from '../../components/Pokecard';
+import './index.css';
+import PokeInfo from '../../components/PokeInfo';
 
-export default function PokeApi() {
+export default function Home() {
   const [pokemons, setPokemons] = useState([]);
   const [region, setRegion] = useState('');
   const [description, setDescription] = useState('');
   const [pesquisa, setPesquisa] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+
 
   async function ProcurarPokedex(num) {
     try {
@@ -55,13 +58,52 @@ export default function PokeApi() {
     );
   };
 
+
+  const VerPokeInfo = (pokemon) => {
+    setSelectedPokemon(pokemon);
+    setIsVisible(true);
+  };
+
+
   useEffect(() => {
     ProcurarPokedex(1);
   }, []);
 
+  const pokedexOptions = [
+    { id: 1, name: 'national' },
+    { id: 2, name: 'kanto' },
+    { id: 3, name: 'original-johto' },
+    { id: 4, name: 'hoenn' },
+    { id: 5, name: 'original-sinnoh' },
+    { id: 6, name: 'extended-sinnoh' },
+    { id: 7, name: 'updated-johto' },
+    { id: 8, name: 'original-unova' },
+    { id: 9, name: 'updated-unova' },
+    { id: 12, name: 'kalos-central' },
+    { id: 13, name: 'kalos-coastal' },
+    { id: 14, name: 'kalos-mountain' },
+    { id: 15, name: 'updated-hoenn' },
+    { id: 16, name: 'original-alola' },
+    { id: 17, name: 'original-melemele' },
+    { id: 18, name: 'original-akala' },
+    { id: 19, name: 'original-ulaula' },
+    { id: 20, name: 'original-poni' },
+    { id: 21, name: 'updated-alola' },
+  ];
+
   return (
     <>
-      <PokedexNavigation ProcurarPokedex={ProcurarPokedex} />
+      <div className='topnav'>
+        <img src="/logo.png" width={100} alt="" />
+        <select className='form-select form-select-lg mb-3' style={{ width: '90%', margin: "10px" }} onChange={(e) => ProcurarPokedex(parseInt(e.target.value))}>
+          {pokedexOptions.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className='container' style={{ margin: '10px auto' }}>
         <div className='input-group mb-3'>
           <input
@@ -80,10 +122,15 @@ export default function PokeApi() {
           <h1>Não foi encontrado nenhum pokemon com esse nome</h1>
         ) : (
           filtrarPokemon().map((pokemon) => (
-            <PokeCard key={pokemon.id} id={pokemon.id} nome={pokemon.name} imagem={pokemon.sprites.front_default} tipos={pokemon.types} />
+            <PokeCard key={pokemon.id} id={pokemon.id} nome={pokemon.name} imagem={pokemon.sprites.front_default} tipos={pokemon.types} onClick={() => VerPokeInfo(pokemon)} />
           ))
         )
         }
+
+        {isVisible && selectedPokemon && (
+          <PokeInfo pokemon={selectedPokemon} onClick={() => setIsVisible(false)} />
+        )}
+
       </div>
     </>
   );

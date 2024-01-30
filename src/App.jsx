@@ -1,10 +1,10 @@
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
-import Description from '../../components/Description';
-import PokeCard from '../../components/Pokecard';
-import './index.css';
-import PokeInfo from '../../components/PokeInfo';
+import Description from './components/Description';
+import PokeCard from './components/Pokecard';
+import './App.css';
+import PokeInfo from './components/PokeInfo';
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);

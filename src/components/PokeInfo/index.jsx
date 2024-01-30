@@ -9,7 +9,7 @@ const PokeInfo = (props) => {
  
     return (
         <div className='poke-info'>
-            <img className='close' onClick={onClick} src='public\x-lg.svg' alt=""/>
+            <img className='close' onClick={onClick} src='src\assets\x-lg.svg' alt=""/>
             <h2>Detalhes do Pokémon</h2>
             <p>ID: #{pokemon.id}</p>
             <p>Nome: {pokemon.name}</p>

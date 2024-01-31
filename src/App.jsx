@@ -5,6 +5,7 @@ import Description from './components/Description';
 import PokeCard from './components/Pokecard';
 import './App.css';
 import PokeInfo from './components/PokeInfo';
+import Footer from './components/Footer';
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
@@ -13,7 +14,7 @@ export default function Home() {
   const [pesquisa, setPesquisa] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
-
+  const [carregando, setCarregando] = useState(true)
 
   async function ProcurarPokedex(num) {
     try {
@@ -47,6 +48,7 @@ export default function Home() {
       });
       const allPokemonData = await Promise.all(result);
       setPokemons(allPokemonData);
+      setCarregando(false);
     } catch (error) {
       console.error(error);
     }
@@ -119,7 +121,11 @@ export default function Home() {
       <Description nome={region} descrição={description.description} />
       <div className="container_pokemon">
         {filtrarPokemon().length === 0 ? (
-          <h1>Não foi encontrado nenhum pokemon com esse nome</h1>
+          carregando ? (
+            <h1>Carregando...</h1>
+          ) : (
+            <h1>Não foi encontrado nenhum pokemon com esse nome</h1>
+          )
         ) : (
           filtrarPokemon().map((pokemon) => (
             <PokeCard key={pokemon.id} id={pokemon.id} nome={pokemon.name} imagem={pokemon.sprites.front_default} tipos={pokemon.types} onClick={() => VerPokeInfo(pokemon)} />
@@ -132,6 +138,8 @@ export default function Home() {
         )}
 
       </div>
+
+      <Footer/>
     </>
   );
 }

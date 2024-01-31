@@ -13,7 +13,7 @@ const PokeCard = (props) => {
     <div className={cardClasses} onClick={onClick}>
       <h4>#{id}</h4>
       <h3>{nome}</h3>
-      <img src={imagem} alt="" />
+      <img src={imagem} alt={nome} loading="lazy"/>
       <p className="type">
         {tiposExibidos}
       </p>

@@ -14,8 +14,8 @@ const PokeInfo = (props) => {
             <p>ID: #{pokemon.id}</p>
             <p>Nome: {pokemon.name}</p>
             <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
-            <p>Altura: {pokemon.height}</p>
-            <p>Peso: {pokemon.weight}</p>
+            <p>Altura: {pokemon.height / 10}m</p>
+            <p>Peso: {pokemon.weight / 10}Kg</p>
             <p>Tipos: {tiposExibidos}</p>
             <p>Habilidades: {HabilidadesExibidos}</p>
         </div>

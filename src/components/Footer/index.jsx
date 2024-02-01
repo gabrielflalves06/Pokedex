@@ -2,7 +2,7 @@ import './index.css';
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <div className="footer">
             <div className="footer-content">
                 <p>Site desenvolvido por: Gabriel Lázaro</p>
 
@@ -16,7 +16,7 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-        </footer>
+        </div>
     );
 }
 

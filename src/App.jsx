@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
+  const [name, setName] = useState('');
   const [region, setRegion] = useState('');
   const [description, setDescription] = useState('');
   const [pesquisa, setPesquisa] = useState('');
@@ -19,9 +20,17 @@ export default function Home() {
   async function ProcurarPokedex(num) {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokedex/${num}`);
+
+      setName(response.data.name);
       ProcurarPokemons(response.data.pokemon_entries);
-      setRegion(response.data.name);
-      setDescription(response.data.descriptions.find((desc) => desc.language.name === "en"));
+      num === 1 ? (
+        (setRegion(''),
+          setDescription(''))
+      ) : (
+
+        (setRegion(response.data.region.name),
+          setDescription(response.data.descriptions.find((desc) => desc.language.name === "en")))
+      )
     } catch (error) {
       console.error(error);
     }
@@ -68,11 +77,10 @@ export default function Home() {
 
 
   useEffect(() => {
-    ProcurarPokedex(1);
+    ProcurarPokedex(2);
   }, []);
 
   const pokedexOptions = [
-    { id: 1, name: 'national' },
     { id: 2, name: 'kanto' },
     { id: 3, name: 'original-johto' },
     { id: 4, name: 'hoenn' },
@@ -91,6 +99,18 @@ export default function Home() {
     { id: 19, name: 'original-ulaula' },
     { id: 20, name: 'original-poni' },
     { id: 21, name: 'updated-alola' },
+    { id: 22, name: 'updated-melemele' },
+    { id: 23, name: 'updated-akala' },
+    { id: 24, name: 'updated-ulaula' },
+    { id: 25, name: 'updated-poni' },
+    { id: 26, name: 'letsgo-kanto' },
+    { id: 27, name: 'galar' },
+    { id: 28, name: 'isle-of-armor' },
+    { id: 29, name: 'crown-tundra' },
+    { id: 30, name: 'hisui' },
+    { id: 31, name: 'paldea' },
+    { id: 32, name: 'kitakami' },
+    { id: 33, name: 'blueberry' },
   ];
 
   return (
@@ -118,7 +138,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Description nome={region} descrição={description.description} />
+      <Description nome={name} descrição={description.description} região={region} />
       <div className="container_pokemon">
         {filtrarPokemon().length === 0 ? (
           carregando ? (
@@ -139,7 +159,7 @@ export default function Home() {
 
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }
